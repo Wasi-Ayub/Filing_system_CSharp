@@ -16,3 +16,8 @@ C:\Users\wasi\source\repos\FilingAssignment\FilingAssignment\obj\Debug\FilingAss
 C:\Users\wasi\source\repos\FilingAssignment\FilingAssignment\obj\Debug\FilingAssignment.Form7.resources
 C:\Users\wasi\source\repos\FilingAssignment\FilingAssignment\obj\Debug\FilingAssignment.Form8.resources
 C:\Users\wasi\source\repos\FilingAssignment\FilingAssignment\obj\Debug\FilingAssignment.Form9.resources
+C:\Users\wasi\source\repos\FilingAssignment\FilingAssignment\bin\Debug\itextsharp.dll
+C:\Users\wasi\source\repos\FilingAssignment\FilingAssignment\bin\Debug\itextsharp.xml
+C:\Users\wasi\source\repos\FilingAssignment\FilingAssignment\obj\Debug\FilingAssignment.csproj.CopyComplete
+C:\Users\wasi\source\repos\FilingAssignment\FilingAssignment\bin\Debug\SautinSoft.Document.dll
+C:\Users\wasi\source\repos\FilingAssignment\FilingAssignment\bin\Debug\SautinSoft.Document.xml

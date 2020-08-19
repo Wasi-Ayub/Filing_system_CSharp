@@ -80,8 +80,15 @@ namespace FilingAssignment
         {
             string targetPath = comboBox4.Text + comboBox5.Text + "\\" + comboBox3.Text;
             string sourcePath = comboBox1.Text + comboBox2.Text + "\\" + comboBox3.Text;
-            File.Move(sourcePath, targetPath);
-            MessageBox.Show("File Moved");
+            if (File.Exists(sourcePath))
+            {
+                File.Move(sourcePath, targetPath);
+                MessageBox.Show("File Moved");
+            }
+            else
+            {
+                MessageBox.Show("File not move");
+            }
         }
     }
 }

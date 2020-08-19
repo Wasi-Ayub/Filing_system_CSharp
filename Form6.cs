@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using SautinSoft.Document;
 
 namespace FilingAssignment
 {
@@ -46,12 +47,33 @@ namespace FilingAssignment
         private void button1_Click(object sender, EventArgs e)
         {
             string path = comboBox1.Text + comboBox2.Text + "\\" + textBox1.Text;
+            string result = comboBox1.Text + comboBox2.Text + "\\result" + textBox1.Text;
             if (File.Exists(path))
             {
-                StreamWriter strm = new StreamWriter(path);
-                strm.Write(richTextBox1.Text);
-                strm.Close();
-                MessageBox.Show("File Have Been Saved");
+                int pdfIndex = textBox1.Text.IndexOf(".pdf");
+                int textIndex = textBox1.Text.IndexOf(".txt");
+                int wordIndex = textBox1.Text.IndexOf(".docx");
+                int excelIndex = textBox1.Text.IndexOf(".csv'");
+                if (pdfIndex != -1)
+                {
+                    DocumentCore dc = DocumentCore.Load(path);
+                    ContentRange cr = dc.Content.Find("Hello").FirstOrDefault();
+                    if(cr != null)
+                    {
+                        cr.Start.Insert(richTextBox1.Text);
+                    }
+                    dc.Save(path);
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(path));
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(result) { UseShellExecute = true });
+                    MessageBox.Show("File Have Been Saved");
+                }
+                else if (textIndex != -1)
+                {
+                    StreamWriter strm = new StreamWriter(path, true);
+                    strm.Write(richTextBox1.Text);
+                    strm.Close();
+                    MessageBox.Show("File Have Been Saved");
+                }
 
             }
             else

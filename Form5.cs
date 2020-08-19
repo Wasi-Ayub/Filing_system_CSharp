@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using iTextSharp.text.pdf.parser;
 
 namespace FilingAssignment
 {
@@ -60,9 +61,35 @@ namespace FilingAssignment
             string path = comboBox1.Text + comboBox2.Text + "\\" + comboBox3.Text;
             if (File.Exists(path))
             {
-                StreamReader strm = new StreamReader(path);
-                richTextBox1.Text = strm.ReadToEnd();
-                strm.Close();
+                try
+                {
+                    int pdfIndex = comboBox3.Text.IndexOf(".pdf");
+                    int textIndex = comboBox3.Text.IndexOf(".txt");
+                    int wordIndex = comboBox3.Text.IndexOf(".docx");
+                    int excelIndex = comboBox3.Text.IndexOf(".csv'");
+                    if(pdfIndex != -1)
+                    {
+                        iTextSharp.text.pdf.PdfReader reader = new iTextSharp.text.pdf.PdfReader(path);
+                        StringBuilder sb = new StringBuilder();
+                        for (int i = 1; i <= reader.NumberOfPages; i++)
+                        {
+                            //Read page
+                            sb.Append(PdfTextExtractor.GetTextFromPage(reader, i));
+                        }
+                        richTextBox1.Text = sb.ToString();
+                        reader.Close();
+                    }
+                    else if (textIndex != -1)
+                    {
+                        StreamReader strm = new StreamReader(path);
+                        richTextBox1.Text = strm.ReadToEnd();
+                        strm.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
             }
             else

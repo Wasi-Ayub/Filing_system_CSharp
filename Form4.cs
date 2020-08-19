@@ -28,7 +28,7 @@ namespace FilingAssignment
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string path = comboBox1.Text + comboBox2.Text + "\\" + textBox1.Text + "." + textBox2.Text;
+            string path = comboBox1.Text + comboBox2.Text + "\\" + textBox1.Text;
             if (!File.Exists(path))
             {
                 File.Create(path);
@@ -70,10 +70,6 @@ namespace FilingAssignment
         {
 
         }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

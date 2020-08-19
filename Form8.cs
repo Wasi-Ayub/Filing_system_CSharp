@@ -80,8 +80,8 @@ namespace FilingAssignment
                     fileName = Path.GetFileName(s);
                     destFile = Path.Combine(targetPath, fileName);
                     File.Copy(s, destFile, true);
-                    MessageBox.Show("File Copied");
                 }
+                 MessageBox.Show("File Copied");
             }
             else
             {
